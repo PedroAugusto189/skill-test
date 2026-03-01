@@ -24,10 +24,6 @@ fun GameSetupScreen(
     allCards: List<Card>,
     onStartGame: () -> Unit
 ) {
-
-    // ===============================
-    // STATES DOS INPUTS
-    // ===============================
     var playersText by remember { mutableStateOf(viewModel.players.toString()) }
     var cardsPerPlayerText by remember { mutableStateOf(viewModel.cardsPerPlayer.toString()) }
 
@@ -41,10 +37,6 @@ fun GameSetupScreen(
                 cardsPerPlayer > 0 &&
                 viewModel.selectedCards.size >= totalNeeded &&
                 !viewModel.isLoading
-
-    // ===============================
-    // UI
-    // ===============================
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,9 +57,6 @@ fun GameSetupScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // ===============================
-        // GRID DE CARTAS
-        // ===============================
         LazyVerticalGrid(
             columns = GridCells.Fixed(4),
             modifier = Modifier.weight(1f)
@@ -97,9 +86,7 @@ fun GameSetupScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // ===============================
-        // INPUT: JOGADORES
-        // ===============================
+        
         OutlinedTextField(
             value = playersText,
             onValueChange = { playersText = it },
@@ -113,9 +100,7 @@ fun GameSetupScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // ===============================
-        // INPUT: CARTAS POR JOGADOR
-        // ===============================
+
         OutlinedTextField(
             value = cardsPerPlayerText,
             onValueChange = { cardsPerPlayerText = it },
@@ -129,9 +114,8 @@ fun GameSetupScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // ===============================
-        // BOTÃO START
-        // ===============================
+
+        
         Button(
             onClick = {
                 viewModel.updatePlayers(players)
