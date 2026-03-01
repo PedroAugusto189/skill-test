@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = "setup"
                 ) {
 
-                    // 🔹 Tela de configuração
+                    
                     composable("setup") {
                         GameSetupScreen(
                             viewModel = viewModel,
@@ -42,12 +42,12 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // 🔹 Tela de resultado (com Play Again)
+                    
                     composable("result") {
                         ResultScreen(
                             viewModel = viewModel,
                             onPlayAgain = {
-                                navController.popBackStack() // volta para setup
+                                navController.popBackStack() 
                             }
                         )
                     }
