@@ -17,19 +17,17 @@ class GameViewModel : ViewModel() {
     private val repository = DeckRepository()
 
 
-    // cartas selecionadas na primeira tela
     var selectedCards = mutableStateListOf<Card>()
         private set
 
-    // quantidade de jogadores
+
     var players by mutableIntStateOf(2)
         private set
 
-    // cartas por jogador
+ 
     var cardsPerPlayer by mutableIntStateOf(2)
         private set
 
-    // loading da API
     var isLoading by mutableStateOf(false)
         private set
 
@@ -76,21 +74,21 @@ class GameViewModel : ViewModel() {
             try {
                 val cardsString = selectedCards.joinToString(",") { it.code }
 
-                // chamada da API
+                // chamada API
                 repository.createDeck(cardsString)
 
-                // embaralhar cartas selecionadas
+                // embaralhar 
                 val shuffled = selectedCards.shuffled()
 
                 val totalCardsNeeded = players * cardsPerPlayer
 
-                // limpar estados antigos
+                // limpar 
                 playerHands.clear()
                 remainingCards.clear()
 
                 var index = 0
 
-                // distribuir cartas
+                // distribuir 
                 for (i in 1..players) {
 
                     val hand = shuffled
